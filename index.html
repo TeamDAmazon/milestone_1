@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Predictor Dashboard</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Stock Predictor</h1>
+    <button class="logout-btn" id="logout">Logout</button>
+  </header>
+
+  <div class="dashboard">
+    
+    <!-- CONTROL PANEL -->
+    <section class="controls">
+      <div class="selectors">
+        
+        <div class="selector-section">
+          <label><strong>Stock:</strong></label>
+          <select id="stock-select">
+            <option value="">Select Stock</option>
+            <option value="tcs">TCS</option>
+            <option value="infosys">INFOSYS</option>
+            <option value="hdfc">HDFC</option>
+            <option value="yesbank">YESBANK</option>
+            <option value="itc">ITC</option>
+          </select>
+        </div>
+
+        <div class="selector-section">
+          <label><strong>Model:</strong></label>
+          <select id="model-select">
+            <option value="">Select Model</option>
+            <option value="lr">Linear Regression</option>
+            <option value="dt">Decision Tree</option>
+            <option value="rf">Random Forest</option>
+          </select>
+        </div>
+
+        <div class="selector-section">
+          <label><strong>Date:</strong></label>
+          <input type="date" id="date-input" />
+        </div>
+
+        <div class="selector-section">
+          <button id="predict-btn" class="predict-btn">Predict</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="summary-card" id="summary" style="display:none;">
+      <h2>Prediction Summary</h2>
+      <p>
+        The <strong id="summary-model"></strong> model predicts that 
+        <strong id="summary-stock"></strong> will close at approximately 
+        <strong id="summary-prediction"></strong> on 
+        <strong id="summary-date"></strong> 
+        with <strong id="confidence"></strong> confidence.
+      </p>
+    </section>
+
+    <!-- MAIN PRICE CHART -->
+    <section class="chart-container" id="chart-section" style="display:none;">
+      <h2 id="stock-name"></h2>
+      <canvas id="stockChart"></canvas>
+    </section>
+
+    <!-- MOVING AVERAGE CHART -->
+    <section class="chart-container" id="ma-chart-section" style="display:none;">
+      <h2>50-Day & 200-Day Moving Averages</h2>
+      <canvas id="maChart"></canvas>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
